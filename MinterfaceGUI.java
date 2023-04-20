@@ -17,27 +17,36 @@ import java.util.*;
 
 public class MinterfaceGUI extends JFrame {
 	private final Bankaccount bankuser;
+	
     private final JLabel greet;
     private final JLabel header;
     private final JLabel passwordLabel;
     private final JLabel userIDLabel;
+    private final JLabel AccountCreationLabel;
+    
     private final JTextField userID;
     private final JTextField Amount;
+    
     private final JPasswordField password;
+    
     private final JButton Login;
-    private final JPanel AccountCreation;
-    private final JLabel AccountCreationLabel;
     private final JButton AccountCreationJButton;
     private final JButton AccountDeletionJButton;
+    
+    private final JPanel AccountCreation;
     private final JPanel TransactionsLabel;
+    
     private final JRadioButton AccountWithdrawalJRadioButton;
     private final JRadioButton AccountDepositJRadioButton;
+    
     private final ButtonGroup AccountTransactions;
 
     MinterfaceGUI() {
         super("Minter Banking APP"); // creates JFrame named Minter Banking APP
         setLayout(new FlowLayout()); // FlowLayout is set to be the layout of the JFrame
         getContentPane().setBackground(Color.WHITE);
+        
+        // LOGIN FRAME
         greet = new JLabel("Welcome user, Christian        ");
         passwordLabel = new JLabel("Username :");
         userIDLabel = new JLabel("Password: ");
@@ -51,19 +60,25 @@ public class MinterfaceGUI extends JFrame {
         AccountCreationLabel = new JLabel("Account Interface: ");
         AccountCreationJButton = new JButton("Create");
         AccountDeletionJButton = new JButton("Delete");
+        
         AccountCreation.add(AccountCreationLabel);
         AccountCreation.add(AccountCreationJButton);
         AccountCreation.add(AccountDeletionJButton);
-
-        TransactionsLabel = new JPanel();
-        AccountTransactions = new ButtonGroup();
+        
+        
         AccountWithdrawalJRadioButton = new JRadioButton("Withdrawal");
         AccountDepositJRadioButton = new JRadioButton("Deposit");
+        
+        TransactionsLabel = new JPanel();
         TransactionsLabel.add(AccountWithdrawalJRadioButton);
         TransactionsLabel.add(AccountDepositJRadioButton);
         TransactionsLabel.add(Amount);
+        
+        AccountTransactions = new ButtonGroup();
         AccountTransactions.add(AccountWithdrawalJRadioButton);
         AccountTransactions.add(AccountDepositJRadioButton);
+        
+        // ADD ALL PANELS INTO FRAME
         add(greet);
         add(header);
         add(passwordLabel);
@@ -88,11 +103,12 @@ public class MinterfaceGUI extends JFrame {
         	
             if (event.getSource() == Login) {
             	if(bankuser.UserInfo.getUsername()==userID.getText())
-            		JOptionPane.showMessageDialog(Login,"Account Created");  
+            		JOptionPane.showMessageDialog(Login,"Account Created");
+            	
+            	
             }             				
             	
                 // handle login button click
             }
         }
     }
-
