@@ -25,21 +25,23 @@ public class MinterfaceGUI extends JFrame {
     private final JLabel AccountCreationLabel;
     
     private final JTextField userID;
-    private final JTextField Amount;
+    
+    // private final JTextField Amount;
     
     private final JPasswordField password;
     
     private final JButton Login;
     private final JButton AccountCreationJButton;
-    private final JButton AccountDeletionJButton;
+    
+    // private final JButton AccountDeletionJButton;
     
     private final JPanel AccountCreation;
-    private final JPanel TransactionsLabel;
     
-    private final JRadioButton AccountWithdrawalJRadioButton;
-    private final JRadioButton AccountDepositJRadioButton;
-    
-    private final ButtonGroup AccountTransactions;
+    // TRANSACTIONS
+    // private final JPanel TransactionsLabel;
+    // private final JRadioButton AccountWithdrawalJRadioButton;
+    // private final JRadioButton AccountDepositJRadioButton;
+    // private final ButtonGroup AccountTransactions;
 
     MinterfaceGUI() {
         super("Minter Banking APP"); // creates JFrame named Minter Banking APP
@@ -48,27 +50,31 @@ public class MinterfaceGUI extends JFrame {
         
         // LOGIN FRAME
         greet = new JLabel("Welcome user, Christian        ");
-        passwordLabel = new JLabel("Username :");
-        userIDLabel = new JLabel("Password: ");
+        passwordLabel = new JLabel("Password: ");
+        userIDLabel = new JLabel("Username: ");
         header = new JLabel("Minter Login:     ");
         userID = new JTextField(8);
         password = new JPasswordField(8);
-        Amount = new JTextField(8);
+        
+        // Amount = new JTextField(8);
 
         Login = new JButton("Login");
         AccountCreation = new JPanel();
-        AccountCreationLabel = new JLabel("Account Interface: ");
-        AccountCreationJButton = new JButton("Create");
-        AccountDeletionJButton = new JButton("Delete");
+        AccountCreationLabel = new JLabel("Join now: ");
+        AccountCreationJButton = new JButton("Create Account");
+        
+        // (FOR USER SETTINGS FRAME)
+        // AccountDeletionJButton = new JButton("Delete");
+        // AccountCreation.add(AccountDeletionJButton);
         
         AccountCreation.add(AccountCreationLabel);
         AccountCreation.add(AccountCreationJButton);
-        AccountCreation.add(AccountDeletionJButton);
         
-        
+        /*
+        FOR USER DASHBOARD FRAME
+         
         AccountWithdrawalJRadioButton = new JRadioButton("Withdrawal");
-        AccountDepositJRadioButton = new JRadioButton("Deposit");
-        
+        AccountDepositJRadioButton = new JRadioButton("Deposit"); 
         TransactionsLabel = new JPanel();
         TransactionsLabel.add(AccountWithdrawalJRadioButton);
         TransactionsLabel.add(AccountDepositJRadioButton);
@@ -77,17 +83,31 @@ public class MinterfaceGUI extends JFrame {
         AccountTransactions = new ButtonGroup();
         AccountTransactions.add(AccountWithdrawalJRadioButton);
         AccountTransactions.add(AccountDepositJRadioButton);
+        */
         
-        // ADD ALL PANELS INTO FRAME
+        // ADD ALL PANELS INTO FRAME:
+        
+        // USER GREET & LOG-IN PROMPT
         add(greet);
         add(header);
-        add(passwordLabel);
-        add(password);
+        
+        // USER ID FIELD
         add(userIDLabel);
         add(userID);
+        
+        // PASSWORD FIELD
+        add(passwordLabel);
+        add(password);
+        
+        // LOG-IN BUTTON
         add(Login);
+        
+        
         add(AccountCreation);
-        add(TransactionsLabel);
+        
+        
+        // add(TransactionsLabel);
+		
 
         Handler event = new Handler();
         userID.addActionListener(event);
