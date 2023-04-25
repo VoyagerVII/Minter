@@ -87,10 +87,10 @@ public class MinterfaceGUI extends JFrame {
         	
 			@Override
 			public void actionPerformed(ActionEvent e) {
-				MinterfaceUserFrame FrameTest = new MinterfaceUserFrame();
 				
-				FrameTest.setSize(684,412); //Sets size to 300 by 300
-				FrameTest.setVisible(true); //Set as visible
+				// PASS CREATION FRAME FROM MinterfaceUserFrame.java
+				new MinterfaceUserFrame();
+				
 			}
         	
         });
@@ -145,32 +145,6 @@ public class MinterfaceGUI extends JFrame {
         bankuser = new Bankaccount();
     }
     
-    
-    public class MinterfaceUserFrame extends JFrame {
-
-    	/**
-    	 * 
-    	 */
-    	private static final long serialVersionUID = 1L;
-    	
-    	
-    	
-    	
-
-    } // END OF USER FRAME
-    
-    public class MinterfaceUserCreation extends JFrame {
-
-    	/**
-    	 * 
-    	 */
-    	private static final long serialVersionUID = 1L;
-    	
-    	
-    	
-    	
-
-    } // END OF USER FRAME
 
     private class Handler implements ActionListener {
 
