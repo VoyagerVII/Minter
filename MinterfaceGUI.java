@@ -146,16 +146,19 @@ public class MinterfaceGUI extends JFrame {
     }
     
 
-    private class Handler implements ActionListener {
+     private class Handler implements ActionListener {
 
         @Override
         public void actionPerformed(ActionEvent event) {
-        	
+        	String username = userID.getText();
+        	String Password = password.getText();
+
+            bankuser.Account(username, "TEST", Password, "TEST");        	
             if (event.getSource() == Login) {
-            	if(bankuser.UserInfo.getUsername()==userID.getText())
-            		JOptionPane.showMessageDialog(Login,"Account Created");
-            	
-            	
+            	if(bankuser.UserInfo.login(username, Password))
+            		JOptionPane.showMessageDialog(Login,"Account Created: "+bankuser.UserInfo.getUsername()+" "+bankuser.UserInfo.getPassword());
+            else JOptionPane.showMessageDialog(Login,"Account Failed");
+
             }             				
             	
                 // handle login button click
