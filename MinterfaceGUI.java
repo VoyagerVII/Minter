@@ -76,6 +76,7 @@ public class MinterfaceGUI extends JFrame {
         // Amount = new JTextField(8);
 
         Login = new JButton("Login");
+        
         AccountCreation = new JPanel();
         AccountCreationLabel = new JLabel("Join now: ");
         
@@ -105,21 +106,7 @@ public class MinterfaceGUI extends JFrame {
         // (FOR USER SETTINGS FRAME)
         // AccountDeletionJButton = new JButton("Delete");
         // AccountCreation.add(AccountDeletionJButton);
-        
-        /*
-        FOR USER DASHBOARD FRAME
-         
-        AccountWithdrawalJRadioButton = new JRadioButton("Withdrawal");
-        AccountDepositJRadioButton = new JRadioButton("Deposit"); 
-        TransactionsLabel = new JPanel();
-        TransactionsLabel.add(AccountWithdrawalJRadioButton);
-        TransactionsLabel.add(AccountDepositJRadioButton);
-        TransactionsLabel.add(Amount);
-        
-        AccountTransactions = new ButtonGroup();
-        AccountTransactions.add(AccountWithdrawalJRadioButton);
-        AccountTransactions.add(AccountDepositJRadioButton);
-        */
+
         
         // ADD ALL PANELS INTO FRAME:
         
@@ -164,6 +151,8 @@ try {
             if (event.getSource() == Login) {
             	if(bankuser.UserInfo.login(username, Password))
             		JOptionPane.showMessageDialog(Login,"Login Successful: "+bankuser.UserInfo.getUsername()+" "+bankuser.UserInfo.getPassword());
+            		
+            	
             else JOptionPane.showMessageDialog(Login,"Login Failed"+bankuser.UserInfo.getUsername()+" "+bankuser.UserInfo.getPassword());
 
             }             				
@@ -175,7 +164,7 @@ try {
                 // handle login button click
             
             
-            
+            new MinterfaceDashboardFrame(bankuser);
             
             
             
