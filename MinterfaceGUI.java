@@ -16,6 +16,11 @@ import javax.swing.JTextField;
 import java.util.*;
 
 public class MinterfaceGUI extends JFrame {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private final Bankaccount bankuser;
 	
     private final JLabel greet;
@@ -25,6 +30,10 @@ public class MinterfaceGUI extends JFrame {
     private final JLabel AccountCreationLabel;
     
     private final JTextField userID;
+    
+    //private final JTextField AccoutCreationUserID;
+    //private final JTextField AccoutCreationPassword;
+    
     
     // private final JTextField Amount;
     
@@ -43,16 +52,16 @@ public class MinterfaceGUI extends JFrame {
     // private final JRadioButton AccountDepositJRadioButton;
     // private final ButtonGroup AccountTransactions;
 
-    MinterfaceGUI() {
+    public MinterfaceGUI() {
         super("Minter Banking APP"); // creates JFrame named Minter Banking APP
         setLayout(new FlowLayout()); // FlowLayout is set to be the layout of the JFrame
         getContentPane().setBackground(Color.WHITE);
         
         // LOGIN FRAME
-        greet = new JLabel("Welcome user, Christian        ");
+        greet = new JLabel("Welcome to Minter!        ");
         passwordLabel = new JLabel("Password: ");
         userIDLabel = new JLabel("Username: ");
-        header = new JLabel("Minter Login:     ");
+        header = new JLabel("Login:     ");
         userID = new JTextField(8);
         password = new JPasswordField(8);
         
@@ -61,14 +70,34 @@ public class MinterfaceGUI extends JFrame {
         Login = new JButton("Login");
         AccountCreation = new JPanel();
         AccountCreationLabel = new JLabel("Join now: ");
+        
+        // ACCOUNT CREATION TEXT BOXES
+        //AccoutCreationUserID = new JTextField(7);
+        // AccoutCreationPassword = new JTextField(7);
+        
+        
         AccountCreationJButton = new JButton("Create Account");
+        
+        AccountCreation.add(AccountCreationLabel);
+        AccountCreation.add(AccountCreationJButton);
+        
+        
+        // NEEDS EDIT HERE: ATTEMPTING TO PASS A FRAME FROM ANOTHER CLASS!!
+        AccountCreationJButton.addActionListener(new ActionListener() {
+        	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				MinterfaceUserFrame FrameTest = new MinterfaceUserFrame();
+				
+				FrameTest.setSize(684,412); //Sets size to 300 by 300
+				FrameTest.setVisible(true); //Set as visible
+			}
+        	
+        });
         
         // (FOR USER SETTINGS FRAME)
         // AccountDeletionJButton = new JButton("Delete");
         // AccountCreation.add(AccountDeletionJButton);
-        
-        AccountCreation.add(AccountCreationLabel);
-        AccountCreation.add(AccountCreationJButton);
         
         /*
         FOR USER DASHBOARD FRAME
@@ -115,6 +144,33 @@ public class MinterfaceGUI extends JFrame {
         Login.addActionListener(event);
         bankuser = new Bankaccount();
     }
+    
+    
+    public class MinterfaceUserFrame extends JFrame {
+
+    	/**
+    	 * 
+    	 */
+    	private static final long serialVersionUID = 1L;
+    	
+    	
+    	
+    	
+
+    } // END OF USER FRAME
+    
+    public class MinterfaceUserCreation extends JFrame {
+
+    	/**
+    	 * 
+    	 */
+    	private static final long serialVersionUID = 1L;
+    	
+    	
+    	
+    	
+
+    } // END OF USER FRAME
 
     private class Handler implements ActionListener {
 
@@ -130,5 +186,7 @@ public class MinterfaceGUI extends JFrame {
             	
                 // handle login button click
             }
-        }
+        } // END OF HANDLER
+    
+    
     }
