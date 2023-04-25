@@ -22,6 +22,7 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
      
      public MinterfaceDashboardFrame() {
     	 
+    	 super("Transactions");
     	 
     	 AccountWithdrawalJRadioButton = new JRadioButton("Withdrawal");
          AccountDepositJRadioButton = new JRadioButton("Deposit"); 
@@ -39,6 +40,8 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
     	 
          
          add(TransactionsLabel);
+         
+         setVisible(true);
      }
 
 
