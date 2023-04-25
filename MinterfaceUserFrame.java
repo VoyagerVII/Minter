@@ -86,4 +86,5 @@ public class MinterfaceUserFrame extends JFrame implements ActionListener {
         // create the account with the provided information
        //
     }
+
 }
