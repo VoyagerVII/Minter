@@ -1,52 +1,72 @@
 package Minter;
 
-import java.awt.Color;
-import java.awt.FlowLayout;
-import java.awt.Panel;
+import javax.swing.*;
+import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import javax.swing.ButtonGroup;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JPasswordField;
-import javax.swing.JRadioButton;
-import javax.swing.JTextField;
-import java.util.*;
 
-public class MinterfaceUserFrame extends JFrame implements ActionListener{
-
-	/**
+public class MinterfaceUserFrame extends JFrame implements ActionListener {
+    /**
 	 * 
 	 */
 	private static final long serialVersionUID = 1L;
-	
-	private final JTextField AccoutCreationUserID;
-    private final JTextField AccoutCreationPassword;
-    
-    
-    public MinterfaceUserFrame(){
-    	super("Account Creation");
-    	setLayout(new FlowLayout()); // FlowLayout is set to be the layout of the JFrame
-        getContentPane().setBackground(Color.WHITE);
-        
-        AccoutCreationUserID = new JTextField(7);
-        AccoutCreationPassword = new JTextField(7);
-        
-        Panel userInputs = new Panel();
-        userInputs.add(AccoutCreationUserID);
-		userInputs.add(AccoutCreationPassword);
-		
-		add(userInputs);
+	private JTextField usernameField;
+    private JTextField emailField;
+    private JTextField passwordField;
+    private JTextField fullNameField;
+    private JButton createButton;
+
+   MinterfaceUserFrame() {
+        super("Create Account");
+
+        // create the components
+        JLabel usernameLabel = new JLabel("Username:");
+        JLabel emailLabel = new JLabel("Email:");
+        JLabel passwordLabel = new JLabel("Password:");
+        JLabel fullNameLabel = new JLabel("Full Name:");
+        usernameField = new JTextField(20);
+        emailField = new JTextField(20);
+        passwordField = new JTextField(20);
+        fullNameField = new JTextField(20);
+        createButton = new JButton("Create");
+
+        // add the components to the frame
+        JPanel panel = new JPanel(new GridLayout(5, 2));
+        panel.add(usernameLabel);
+        panel.add(usernameField);
+        panel.add(emailLabel);
+        panel.add(emailField);
+        panel.add(passwordLabel);
+        panel.add(passwordField);
+        panel.add(fullNameLabel);
+        panel.add(fullNameField);
+        panel.add(createButton);
+
+        add(panel);
+
+        // register the button for events
+        createButton.addActionListener(this);
+
+        // set the frame properties
+        setSize(300, 200);
+        setVisible(true);
     }
 
+    @Override
+    public void actionPerformed(ActionEvent e) {
+        // create the account with the provided information
+        String username = usernameField.getText();
+        String email = emailField.getText();
+        String password = passwordField.getText();
+        String fullName = fullNameField.getText();
 
-	@Override
-	public void actionPerformed(ActionEvent e) {
-		// TODO Auto-generated method stub
-		
-	}
+        Bankaccount bankAccount = new Bankaccount();
+        bankAccount.Account(username, email, password, fullName);
 
+        // show a message to the user that the account was created successfully
+        JOptionPane.showMessageDialog(this, "Account created successfully");
+
+        // close the frame
+        dispose();
+    }
 }
