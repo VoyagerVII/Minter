@@ -16,11 +16,13 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
 	
 	// TRANSACTIONS
      private final JPanel TransactionsLabel;
+     private final JPanel ConfirmationLabel;
      private final JRadioButton AccountWithdrawalJRadioButton;
      private final JRadioButton AccountDepositJRadioButton;
      private final ButtonGroup AccountTransactions;
      private final JButton Confirmation;
      private final JTextField Amount;
+     private final JLabel Transactions;
      
      public MinterfaceDashboardFrame(final Bankaccount bankuser) {
     	 
@@ -28,13 +30,17 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
     	 
     	 
     	 
-    	 
+         Confirmation = new JButton("Confirm");
     	 AccountWithdrawalJRadioButton = new JRadioButton("Withdrawal");
          AccountDepositJRadioButton = new JRadioButton("Deposit"); 
          TransactionsLabel = new JPanel();
-         
-         Amount = new JTextField(8);
-         
+         ConfirmationLabel = new JPanel();
+         Amount = new JTextField(20);
+         Transactions = new JLabel("Bank Account Transactions Log: \n"
+         		+ ":Balance "+bankuser.UserBalance.getBalance()
+         		+ "\n:Deposits "+bankuser.UserBalance.getDeposit()
+         		+ "\n:Withdraws "+bankuser.UserBalance.getWithdrawal()
+        		 +"\n");
          TransactionsLabel.add(AccountWithdrawalJRadioButton);
          TransactionsLabel.add(AccountDepositJRadioButton);
          TransactionsLabel.add(Amount);
@@ -43,37 +49,42 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
          AccountTransactions.add(AccountWithdrawalJRadioButton);
          AccountTransactions.add(AccountDepositJRadioButton);
     	 
-         add(TransactionsLabel);
+         ConfirmationLabel.add(TransactionsLabel);
+         ConfirmationLabel.add(Confirmation);
+         ConfirmationLabel.add(Transactions);
+         add(ConfirmationLabel);
          
-         Confirmation = new JButton("Confirm");
-         add(Confirmation);
          Confirmation.addActionListener(new ActionListener() {
          	
- 	public void actionPerformed(ActionEvent e) {
+ 			public void actionPerformed(ActionEvent e) {
  				
- 		if(Confirmation.isSelected())
- 		{
- 			if(AccountWithdrawalJRadioButton.isSelected())
- 			{
- 		 		String Withdrawal = Amount.getText();
- 		 		     double amountDouble = Double.parseDouble(Withdrawal);
+ 				if(e.getSource()==Confirmation)
+ 				{
+ 					if(AccountWithdrawalJRadioButton.isSelected())
+ 					{
+ 		 				String Withdrawal = Amount.getText();
+ 		 		        double amountDouble = Double.parseDouble(Withdrawal);
  		 				bankuser.UserBalance.setWithdrawal(amountDouble);
- 			}	
- 			if(AccountDepositJRadioButton.isSelected())
- 			{
+						JOptionPane.showMessageDialog(Confirmation, "Deposited successfully: "+"Withdrawal: "+ bankuser.UserBalance.getWithdrawal() );
+
+ 					}	
+ 					if(AccountDepositJRadioButton.isSelected())
+ 					{
  						
- 		 		String Deposit = Amount.getText();
- 		 		      double amountDouble = Double.parseDouble(Deposit);
- 		 		bankuser.UserBalance.setDeposit(amountDouble);
+ 		 				String Deposit = Amount.getText();
+ 		 		        double amountDouble = Double.parseDouble(Deposit);
+ 		 				bankuser.UserBalance.setDeposit(amountDouble);
+						JOptionPane.showMessageDialog(Confirmation, "Deposited successfully: "+"Deposit: "+ bankuser.UserBalance.getDeposit() );
+						 
 
+ 					}
+
+ 				}
+ 				
+ 				
+ 				
+ 			dispose();
  			}
-
- 		}
- 				
- 				
- 				
- 	dispose();
- 	}
          	
          });
          
