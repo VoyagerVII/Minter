@@ -12,6 +12,8 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
 	 */
 	private static final long serialVersionUID = 1L;
 	
+	
+	
 	// TRANSACTIONS
      private final JPanel TransactionsLabel;
      private final JRadioButton AccountWithdrawalJRadioButton;
@@ -20,9 +22,12 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
      
      private final JTextField Amount;
      
-     public MinterfaceDashboardFrame() {
+     public MinterfaceDashboardFrame(final Bankaccount bankuser) {
     	 
-    	 super("Transactions");
+    	 super("User Dashboard");
+    	 
+    	 
+    	 
     	 
     	 AccountWithdrawalJRadioButton = new JRadioButton("Withdrawal");
          AccountDepositJRadioButton = new JRadioButton("Deposit"); 
@@ -41,6 +46,7 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
          
          add(TransactionsLabel);
          
+         setSize(684,412);
          setVisible(true);
      }
 
