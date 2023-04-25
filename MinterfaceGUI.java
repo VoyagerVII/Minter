@@ -64,7 +64,8 @@ public class MinterfaceGUI extends JFrame {
         
         //CREATE BANKUSER
         bankuser = new Bankaccount();
-        
+        bankuser.Balance(0.0, 0.0, 0.0, 0.0);
+        bankuser.Authentication("", "", "", "", "");
         // LOGIN FRAME
         greet = new JLabel("Welcome to Minter!        ");
         passwordLabel = new JLabel("Password: ");
@@ -174,4 +175,3 @@ try {
     
     
     }
-	
