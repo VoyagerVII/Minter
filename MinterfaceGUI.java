@@ -1,3 +1,8 @@
+//MinterfaceGUI.java
+//04/25/2023
+//Displays the minterface GUI
+
+
 package Minter;
 
 import java.awt.Color;
@@ -21,7 +26,7 @@ public class MinterfaceGUI extends JFrame {
 	 */
 	private static final long serialVersionUID = 1L;
 
-	private final Bankaccount bankuser;
+	public  Bankaccount bankuser;
 	
     private final JLabel greet;
     private final JLabel header;
@@ -57,6 +62,9 @@ public class MinterfaceGUI extends JFrame {
         setLayout(new FlowLayout()); // FlowLayout is set to be the layout of the JFrame
         getContentPane().setBackground(Color.WHITE);
         
+        //CREATE BANKUSER
+        bankuser = new Bankaccount();
+        
         // LOGIN FRAME
         greet = new JLabel("Welcome to Minter!        ");
         passwordLabel = new JLabel("Password: ");
@@ -85,11 +93,10 @@ public class MinterfaceGUI extends JFrame {
         // NEEDS EDIT HERE: ATTEMPTING TO PASS A FRAME FROM ANOTHER CLASS!!
         AccountCreationJButton.addActionListener(new ActionListener() {
         	
-			@Override
 			public void actionPerformed(ActionEvent e) {
 				
 				// PASS CREATION FRAME FROM MinterfaceUserFrame.java
-				new MinterfaceUserFrame();
+				new MinterfaceUserFrame( bankuser);
 				
 			}
         	
@@ -142,28 +149,40 @@ public class MinterfaceGUI extends JFrame {
         userID.addActionListener(event);
         password.addActionListener(event);
         Login.addActionListener(event);
-        bankuser = new Bankaccount();
     }
     
+    
 
-     private class Handler implements ActionListener {
+    private class Handler implements ActionListener {
 
-        @Override
         public void actionPerformed(ActionEvent event) {
         	String username = userID.getText();
         	String Password = password.getText();
 
-            bankuser.Account(username, "TEST", Password, "TEST");        	
+           // bankuser.Account(username, "TEST", Password, "TEST");
+try {
             if (event.getSource() == Login) {
             	if(bankuser.UserInfo.login(username, Password))
-            		JOptionPane.showMessageDialog(Login,"Account Created: "+bankuser.UserInfo.getUsername()+" "+bankuser.UserInfo.getPassword());
-            else JOptionPane.showMessageDialog(Login,"Account Failed");
+            		JOptionPane.showMessageDialog(Login,"Login Successful: "+bankuser.UserInfo.getUsername()+" "+bankuser.UserInfo.getPassword());
+            else JOptionPane.showMessageDialog(Login,"Login Failed"+bankuser.UserInfo.getUsername()+" "+bankuser.UserInfo.getPassword());
 
             }             				
-            	
+} catch(java.lang.NullPointerException d ) {
+	JOptionPane.showMessageDialog(Login,"Login not found");
+
+}
+       	
                 // handle login button click
+            
+            
+            
+            
+            
+            
+            
             }
         } // END OF HANDLER
     
     
     }
+	
