@@ -96,7 +96,11 @@ public class Balance extends Bankaccount {
 	        {
 	        	throw new IllegalArgumentException ("Input must be valid");
 	        }
+	    	 if(this.balance==0)
+		     this.balance = this.deposit;
+	    	 
 	        this.balance = balance;
+	       
 	    }
    //displays the current users balance
 	    public void showBalance() {
