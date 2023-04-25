@@ -16,9 +16,6 @@ public class MinterfaceFrame extends Bankaccount {
 				FrameObject.setSize(684,412); //Sets size to 300 by 300
 				FrameObject.setVisible(true); //Set as visible
 				
-				// SECOND FRAME TEST
-				FrameTest.setSize(684,412); //Sets size to 300 by 300
-				FrameTest.setVisible(true); //Set as visible
 				
 	}			
 }
