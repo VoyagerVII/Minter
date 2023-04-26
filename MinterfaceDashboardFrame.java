@@ -37,6 +37,9 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
     	 
     	 super("User Dashboard");
     	 
+         getContentPane().setBackground(Color.darkGray);
+
+    	 
     	 setLayout(new FlowLayout());
     	 
     	 transactionHistory = new ArrayList<>();
@@ -98,25 +101,28 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
  				
  				if(e.getSource()==Confirmation)
  				{
+	 	 				String amount = Amount.getText();
+ 		 		        double amountDouble = Double.parseDouble(amount);
+ 						
  					String transactionDetails = "";
  					
  					if(AccountWithdrawalJRadioButton.isSelected())
  					{
- 		 				String Withdrawal = Amount.getText();
- 		 		        double amountDouble = Double.parseDouble(Withdrawal);
+ 		 		        
  		 		        
  		 		        transactionDetails = "Withdrawal: " + amountDouble;
  		 				
  		 		        bankuser.UserBalance.setWithdrawal(amountDouble);
+ 		 		        
+ 		 		     // if(amountDouble!=bankuser.UserBalance.getWithdrawal())
+		 		        	//amountDouble = bankuser.UserBalance.getWithdrawal();
+ 		 		      
 						JOptionPane.showMessageDialog(Confirmation, "Deposited successfully: "+"Withdrawal: "+ bankuser.UserBalance.getWithdrawal() );
 						
 
  					}	
  					if(AccountDepositJRadioButton.isSelected())
  					{
- 						
- 		 				String Deposit = Amount.getText();
- 		 		        double amountDouble = Double.parseDouble(Deposit);
  		 		        
  		 		        transactionDetails = "Deposit: " + amountDouble;
  		 		        
