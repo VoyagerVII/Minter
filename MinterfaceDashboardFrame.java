@@ -27,6 +27,7 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
      
      private final JButton Confirmation;
      private final JButton Logout;
+     private final JButton UserSettings;
      
      private final JTextField Amount;
      
@@ -36,16 +37,21 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
     	 
     	 super("User Dashboard");
     	 
+    	 setLayout(new FlowLayout());
+    	 
     	 transactionHistory = new ArrayList<>();
     	 
          Confirmation = new JButton("Confirm");
          Logout = new JButton("Logout");
+         UserSettings = new JButton("User Settings");
          
     	 AccountWithdrawalJRadioButton = new JRadioButton("Withdrawal");
          AccountDepositJRadioButton = new JRadioButton("Deposit"); 
          
          TransactionsLabel = new JPanel();
          ConfirmationLabel = new JPanel();
+         
+         //
          UserChoice = new JPanel();
          
          Amount = new JTextField(20);
@@ -69,19 +75,21 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
          ConfirmationLabel.add(Transactions);
          add(ConfirmationLabel);
          
+         UserChoice.add(UserSettings);
          UserChoice.add(Logout);
+         add(UserChoice);
+         
          Logout.addActionListener(new ActionListener() {
 
 			@Override
 			public void actionPerformed(ActionEvent e) {
-			
+				
 				dispose();
+			
 			}
 
         	 
          });
-         
-         add(UserChoice);
          
          
          Confirmation.addActionListener(new ActionListener() {
@@ -101,6 +109,7 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
  		 				
  		 		        bankuser.UserBalance.setWithdrawal(amountDouble);
 						JOptionPane.showMessageDialog(Confirmation, "Deposited successfully: "+"Withdrawal: "+ bankuser.UserBalance.getWithdrawal() );
+						
 
  					}	
  					if(AccountDepositJRadioButton.isSelected())
@@ -112,12 +121,16 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
  		 		        transactionDetails = "Deposit: " + amountDouble;
  		 		        
  		 				bankuser.UserBalance.setDeposit(amountDouble);
-						JOptionPane.showMessageDialog(Confirmation, "Deposited successfully: "+"Deposit: "+ bankuser.UserBalance.getDeposit() );
-						 
+						JOptionPane.showMessageDialog(Confirmation, "Deposited successfully: "+"Deposit: "+ bankuser.UserBalance.getDeposit() );	 
 
  					}
  						
  					transactionHistory.add(transactionDetails);
+ 					Transactions.setText("<html>Bank Account Transactions Log: <br>"
+				            + "<html>Balance: "+bankuser.UserBalance.getBalance() + "<html><br>"
+				            + "<html>Deposits: "+bankuser.UserBalance.getDeposit() + "<html><br>"
+				            + "<html>Withdraws: " +bankuser.UserBalance.getWithdrawal() + "<html><br>"
+				            +"<html><br>");
  				}
  			}			
          	
