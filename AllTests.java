@@ -9,7 +9,8 @@ import org.junit.runners.Suite.SuiteClasses;
 	BankingTestBalance.class,
 	BankingTestAccount.class,
 	BankingTestLogin.class, 
-	BankingTestAuthentication.class
+	BankingTestAuthentication.class,
+	BankingTestminterInterface.class
 	})
 public class AllTests {
 
