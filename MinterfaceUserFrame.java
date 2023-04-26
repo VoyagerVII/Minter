@@ -21,13 +21,12 @@ public class MinterfaceUserFrame extends JFrame implements ActionListener {
     
     private JButton createButton;
     
-    private Bankaccount bankuserAccount;
 
    MinterfaceUserFrame(final Bankaccount bankuser) {
         super("Create Account");
-        
+        getContentPane().setBackground(Color.cyan);
+
         // create the components
-        bankuserAccount = new Bankaccount();
         JLabel usernameLabel = new JLabel("Username:");
         JLabel emailLabel = new JLabel("Email:");
         JLabel passwordLabel = new JLabel("Password:");
