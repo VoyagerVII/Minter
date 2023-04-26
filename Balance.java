@@ -8,7 +8,7 @@ public class Balance extends Bankaccount {
 		private double deposit;
 	    private double withdrawal;
 	    private double spending;
-	    private double balance;
+	    private double balance = 0.0;
 //sets the balance and performs error checking
 	    public Balance(double deposit, double withdrawal, double spending, double balance) {
 	    	if (deposit<0)
@@ -30,7 +30,7 @@ public class Balance extends Bankaccount {
 	    	this.deposit = deposit;
 	        this.withdrawal = withdrawal;
 	        this.spending = spending;
-	        this.balance = balance + deposit - withdrawal - spending;
+	        this.balance = balance + deposit - (withdrawal + spending);
 	    }
 	    // Getters and setters
 	    public double getDeposit() {
@@ -38,10 +38,7 @@ public class Balance extends Bankaccount {
 	    } 
 	   //sets the deposit
 	    public void setDeposit(double deposit) {
-	    	if (deposit<0)
-	        {
-	        	throw new IllegalArgumentException ("Input must be valid");
-	        }
+	    	
 	    	if (deposit<0)
 	        {
 	        	throw new IllegalArgumentException ("Input must be valid");
@@ -61,9 +58,8 @@ public class Balance extends Bankaccount {
 	        {
 	        	throw new IllegalArgumentException ("Input must be valid");
 	        }
-	    	
 	    	this.withdrawal = withdrawal;
-	        this.balance -= deposit;
+	        this.balance -= withdrawal;
 
 	    }
 	   //gets the spending of the user
