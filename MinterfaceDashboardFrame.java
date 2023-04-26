@@ -27,7 +27,7 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
      
      private final JButton Confirmation;
      private final JButton Logout;
-     private final JButton UserSettings;
+     private final JButton UserProfile;
      
      private final JTextField Amount;
      
@@ -49,7 +49,7 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
     	 
          Confirmation = new JButton("Confirm");
          Logout = new JButton("Logout");
-         UserSettings = new JButton("User Settings");
+         UserProfile = new JButton("User Profile");
          
     	 AccountWithdrawalJRadioButton = new JRadioButton("Withdrawal");
          AccountDepositJRadioButton = new JRadioButton("Deposit"); 
@@ -98,7 +98,7 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
 
          add(ConfirmationLabel);
          
-         UserChoice.add(UserSettings);
+         UserChoice.add(UserProfile);
          UserChoice.add(Logout);
          add(UserChoice);
          add(UserinfoPanel);
@@ -114,7 +114,7 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
 
         	 
          });
-         UserSettings.addActionListener(new ActionListener() {
+         UserProfile.addActionListener(new ActionListener() {
 
  			@Override
  			public void actionPerformed(ActionEvent e) {
