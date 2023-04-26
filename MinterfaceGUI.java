@@ -1,8 +1,6 @@
 //MinterfaceGUI.java
 //04/25/2023
 //Displays the minterface GUI
-
-
 package Minter;
 
 import java.awt.Color;
@@ -150,25 +148,21 @@ public class MinterfaceGUI extends JFrame {
            // bankuser.Account(username, "TEST", Password, "TEST");
 try {
             if (event.getSource() == Login) {
-            	if(bankuser.UserInfo.login(username, Password))
+            	if(bankuser.UserInfo.login(username, Password)) {
             		JOptionPane.showMessageDialog(Login,"Login Successful: "+bankuser.UserInfo.getUsername()+" "+bankuser.UserInfo.getPassword());
-            		
+                	new MinterfaceDashboardFrame(bankuser);
+            	}
             	
-            else JOptionPane.showMessageDialog(Login,"Login Failed"+bankuser.UserInfo.getUsername()+" "+bankuser.UserInfo.getPassword());
+            else 
+            	{
+            	JOptionPane.showMessageDialog(Login,"Login Failed"+bankuser.UserInfo.getUsername()+" "+bankuser.UserInfo.getPassword());
+            	}
 
             }             				
 } catch(java.lang.NullPointerException d ) {
 	JOptionPane.showMessageDialog(Login,"Login not found");
-
 }
-       	
-                // handle login button click
-            
-            
-            new MinterfaceDashboardFrame(bankuser);
-            
-            
-            
+
             
             }
         } // END OF HANDLER
