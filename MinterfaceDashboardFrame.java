@@ -33,11 +33,14 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
      
      private final JLabel Transactions;
      
+     private final JLabel Userinformation;
+     private final JPanel UserinfoPanel;
+     
      public MinterfaceDashboardFrame(final Bankaccount bankuser) {
     	 
     	 super("User Dashboard");
     	 
-         getContentPane().setBackground(Color.darkGray);
+         getContentPane().setBackground(Color.white);
 
     	 
     	 setLayout(new FlowLayout());
@@ -53,6 +56,7 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
          
          TransactionsLabel = new JPanel();
          ConfirmationLabel = new JPanel();
+         UserinfoPanel = new JPanel();
          
          //
          UserChoice = new JPanel();
@@ -64,7 +68,21 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
          		+ "<html>Deposits: "+bankuser.UserBalance.getDeposit() + "<html><br>"
          		+ "<html>Withdraws: " +bankuser.UserBalance.getWithdrawal() + "<html><br>"
         		 +"<html><br>");
-         
+         Userinformation = new JLabel( "<html>Bank Account User Information: <br>"
+           		+ "<html>Username: "+bankuser.UserInfo.getUsername() + "<html><br>"
+           		+ "<html>Password: "+bankuser.UserInfo.getPassword() + "<html><br>"
+           		+ "<html>Name: "+bankuser.UserInfo.getFullName() + "<html><br>"
+                 + "<html>Email: "+bankuser.UserInfo.getEmail() + "<html><br>"
+           		+ "<html>Balance: "+bankuser.UserBalance.getBalance() + "<html><br>"
+                 + "<html>Deposits: "+bankuser.UserBalance.getDeposit() + "<html><br>"
+                 + "<html>Withdraws: " +bankuser.UserBalance.getWithdrawal() + "<html><br>"
+                 +"<html><br>");
+        		 
+        		 
+        		 
+         Userinformation.setVisible(false);
+        		 
+        		 
          TransactionsLabel.add(AccountWithdrawalJRadioButton);
          TransactionsLabel.add(AccountDepositJRadioButton);
          TransactionsLabel.add(Amount);
@@ -76,11 +94,14 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
          ConfirmationLabel.add(TransactionsLabel);
          ConfirmationLabel.add(Confirmation);
          ConfirmationLabel.add(Transactions);
+         UserinfoPanel.add(Userinformation);
+
          add(ConfirmationLabel);
          
          UserChoice.add(UserSettings);
          UserChoice.add(Logout);
          add(UserChoice);
+         add(UserinfoPanel);
          
          Logout.addActionListener(new ActionListener() {
 
@@ -93,8 +114,27 @@ public class MinterfaceDashboardFrame extends JFrame implements ActionListener {
 
         	 
          });
-         
-         
+         UserSettings.addActionListener(new ActionListener() {
+
+ 			@Override
+ 			public void actionPerformed(ActionEvent e) {
+ 		         Userinformation.setVisible(true);
+ 		        Userinformation.setText(
+ 		        "<html>Bank Account User Information: <br>"
+          		+ "<html>Username: "+bankuser.UserInfo.getUsername() + "<html><br>"
+          		+ "<html>Password: "+bankuser.UserInfo.getPassword() + "<html><br>"
+          		+ "<html>Name: "+bankuser.UserInfo.getFullName() + "<html><br>"
+                + "<html>Email: "+bankuser.UserInfo.getEmail() + "<html><br>"
+          		+ "<html>Balance: "+bankuser.UserBalance.getBalance() + "<html><br>"
+                + "<html>Deposits: "+bankuser.UserBalance.getDeposit() + "<html><br>"
+                + "<html>Withdraws: " +bankuser.UserBalance.getWithdrawal() + "<html><br>"
+                +"<html><br>");
+ 			
+ 			}
+
+         	 
+          });
+
          Confirmation.addActionListener(new ActionListener() {
          	
  			public void actionPerformed(ActionEvent e) {
